@@ -1,0 +1,14 @@
+{
+    "name": "beporter/phpunit-coverage-tutorial",
+    "description": "A small demonstration of using PHPUnit's @covers annotation to control code coverage.",
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Brian Porter",
+            "email": "beporter@users.sourceforge.net"
+        }
+    ]
+}
