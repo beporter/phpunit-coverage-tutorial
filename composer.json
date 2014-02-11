@@ -2,7 +2,8 @@
     "name": "beporter/phpunit-coverage-tutorial",
     "description": "A small demonstration of using PHPUnit's @covers annotation to control code coverage.",
     "require-dev": {
-        "phpunit/phpunit": "3.7.*"
+        "phpunit/phpunit": "3.7.*",
+        "icecave/woodhouse": "dev-master"
     },
     "license": "CC-BY-NC-SA-3.0",
     "authors": [
