@@ -33,7 +33,7 @@ script:
 # after_failure:
 
 after_script:
-  - vendor/bin/woodhouse publish beporter/phpunit-coverage-tutorial coverage/:coverage/ --coverage-image img/coverage.png --coverage-phpunit coverage.txt --auth-token-env WOODHOUSE_TOKEN
+  - vendor/bin/woodhouse publish beporter/phpunit-coverage-tutorial coverage/:coverage/ --coverage-image img/coverage.png --image-theme buckler --coverage-phpunit coverage.txt --auth-token-env WOODHOUSE_TOKEN
 
 # Control email notifications
 notifications:
