@@ -70,7 +70,7 @@ class SampleClassTest extends PHPUnit_Framework_TestCase {
 	 * explicitly cover this one method, and not any of the resouces that
 	 * method might use itself.)
 	 *
-	 * @covers SampleClass::printFibSequence
+	 * @covers SampleClass::fib
 	 * @dataProvider provideTestFibArgs
 	 * @return void
 	 */
