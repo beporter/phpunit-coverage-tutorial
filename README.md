@@ -25,8 +25,8 @@ So PHPUnit's `@covers` annotation exists to provide a way to restrict which part
 ### Running existing tests and checking coverage
 
 1. The first step is to get familiar with the code and the tests.
-	* Open `SampleClass.php`. You'll see it is built to generate [Fibonacci](http://en.wikipedia.org/wiki/Fibonacci_number) value arrays, and can format them into strings. 
-	* In `SampleClassTest.php` you'll find tests for all three methods (`fib()`, `aryToStr()` and `printFibSequence()`) but note that the first and last tests are set to be skipped via `markTestSkipped()` and `markTestIncomplete()`. _(We'll come back to this later.)_
+	* Open [`SampleClass.php`](SampleClass.php). You'll see it is built to generate [Fibonacci](http://en.wikipedia.org/wiki/Fibonacci_number) value arrays, and can format them into strings. 
+	* In [`SampleClassTest.php`](SampleClassTest.php) you'll find tests for all three methods (`fib()`, `aryToStr()` and `printFibSequence()`) but note that the first and last tests are set to be skipped via `markTestSkipped()` and `markTestIncomplete()`. _(We'll come back to this later.)_
 
 1. Next we'll run the tests as-is and generate a code coverage report for the project.
 	* In your terminal, run `./phpunit-runner.sh`.
@@ -49,7 +49,7 @@ So PHPUnit's `@covers` annotation exists to provide a way to restrict which part
 
 1. The first thing we want to do is isolate our only active test so that it only "covers" the method we intend it to.
 	* _(Another [probably better] way to accomplish this is by using [test doubles](http://phpunit.de/manual/3.7/en/test-doubles.html) but this example is about `@covers`, so bear with me.)_
-	* In `SampleClassTest.php`, find the comment `TUTORIAL#1` which should be around line `106`.
+	* In `SampleClassTest.php`, find the comment `TUTORIAL#1` which should be around [`L106`](SampleClassTest.php#L106).
 	* Immediately below that line is a PHPUnit `@covers` annotation that has been disabled.
 	* Remove the `-disabled` from the annotation (so the whole clause reads `@covers SampleClass::printFibSequence`) and save the file.
 
@@ -62,7 +62,7 @@ So PHPUnit's `@covers` annotation exists to provide a way to restrict which part
 
 In this tutorial, the hard work of writing the tests has been done for you, so all you need to do is enable them.
 
- 1. In `SampleClassTest.php`, find the line contain `TUTORIAL#2` which should be around `78` at the top of `testFib()`.
+ 1. In `SampleClassTest.php`, find the line contain `TUTORIAL#2` which should be around [`L78`](SampleClassTest.php#L78) at the top of `testFib()`.
 
 1. Delete this entire line (which will cause this test to no longer be skipped) and save the file.
 
@@ -85,7 +85,7 @@ In this tutorial, the hard work of writing the tests has been done for you, so a
 
 ### BONUS: Using a test double instead of @covers
 
-* The last test method, `SampleClassTest::testPrintFibSequenceTestDouble()` is an alternate way of testing the `printFibSequence()`.
+* The last test method, `SampleClassTest::testPrintFibSequenceTestDouble()` (marked by a `TUTORIAL#3` comment around [`L128`](SampleClassTest.php#L128)) can be enabled by deleting the `markTestIncomplete()` line and is an alternate way of testing the `printFibSequence()`.
 
 * It replaces the "real" versions of the `fib()` and `aryToStr()` methods with "test doubles" that do what we tell them to instead of what the actual code as written does.
 
