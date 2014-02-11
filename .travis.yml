@@ -4,7 +4,9 @@ php:
   - "5.3"
 
 env:
-  - APP_ENV=travis
+  global:
+    - secure: MKfqW1nyD+8OKBsa6OwXOY21hvlt60P1Mh3AAsfcErkqWlZ89sDFovjd4mLHiAHqfyjtbV5Dlqs0Z792/D5R+koV2HJz2npE281qujctdAN0XSy7oe7ok0bl17uPtV2qyUMrAnfj6iPN6Dp47Q5sCZ6pWwS7Cmsr4PPBlSKjS4E=
+    - APP_ENV=travis
 
 # Services to Enable
 services:
@@ -13,6 +15,7 @@ services:
 branches:
   # Blacklist these branches
   except:
+    - gh-pages
 
 before_install:
   - git submodule update --init --recursive
@@ -29,8 +32,9 @@ script:
 
 # after_failure:
 
-# after_script:
+after_script:
+  - vendor/bin/woodhouse publish beporter/phpunit-coverage-tutorial coverage/:coverage/ --coverage-image img/coverage.png --coverage-phpunit coverage.txt --auth-token-env WOODHOUSE_TOKEN
 
-# To send or not notifications
+# Control email notifications
 notifications:
   email: false
