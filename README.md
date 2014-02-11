@@ -107,3 +107,16 @@ In this tutorial, the hard work of writing the tests has been done for you, so a
 * The resulting code coverage is much "truer" because you don't get ANY incidental method calls as a bonus to your coverage. This makes you work for the coverage more honestly.
 
 * The downside is that the `@covers` annotations are **really** easy to miss, and when refactoring code or tests, you can end up with a test that `@covers` a method name that doesn't exist anymore, which means that test contributes _nothing_ to your coverage even if it is actually executing and verifying some code somewhere correctly.
+
+
+## Questions, Comments, Feedback, Contributions
+
+Please [post an issue](https://github.com/beporter/phpunit-coverage-tutorial/issues/new). This was intended as a one-off lesson, so while I appreciate feedback and contributions, I don't intended to spend a lot of time maintaining or improving this project.
+
+## License
+
+[CC-BY-NC-SA-3.0](http://spdx.org/licenses/CC-BY-NC-SA-3.0)
+
+## Copyright
+
+&copy; 2014 Brian Porter
