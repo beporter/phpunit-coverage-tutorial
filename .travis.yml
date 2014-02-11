@@ -1,0 +1,36 @@
+language: php
+
+php:
+  - "5.3"
+
+env:
+  - APP_ENV=travis
+
+# Services to Enable
+services:
+
+# Branches to be built or not
+branches:
+  # Blacklist these branches
+  except:
+
+before_install:
+  - git submodule update --init --recursive
+
+install:
+   - composer install
+
+# before_script:
+
+script:
+  - sh -c "./phpunit-runner.sh;"
+
+# after_success:
+
+# after_failure:
+
+# after_script:
+
+# To send or not notifications
+notifications:
+  email: false
