@@ -75,7 +75,7 @@ In this tutorial, the hard work of writing the tests has been done for you, so a
 
 * If you take a look at the `testFib()` method, you'll notice that it has method arguments defined, and doesn't do any setup. It only calls the `assertEquals()` assertion with the provided arguments.
 
-* The arguments come from a [data provider](), which is another method in the test class that returns an array of "data sets" that should be fed to the test method.
+* The arguments come from a [data provider](http://phpunit.de/manual/3.7/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers), which is another method in the test class that returns an array of "data sets" that should be fed to the test method.
 
 * The `testFib()` method's doc block contains a `@dataProvider provideTestFibArgs` annotation that tells PHPUnit which method to get the data sets from.
 
