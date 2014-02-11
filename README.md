@@ -2,6 +2,8 @@
 
 A small demonstration of using PHPUnit's [@covers annotation](http://phpunit.de/manual/current/en/appendixes.annotations.html#appendixes.annotations.covers) to control code coverage.
 
+[![Build Status](https://travis-ci.org/beporter/phpunit-coverage-tutorial.png?branch=master)](https://travis-ci.org/beporter/phpunit-coverage-tutorial) <!-- [![Coverage Status](https://coveralls.io/repos/beporter/phpunit-coverage-tutorial/badge.png)](https://coveralls.io/r/beporter/phpunit-coverage-tutorial) -->
+
 PHPUnit utilizes the [xdebug](http://xdebug.org/) extension in order to analyze your code and determine which lines of your code are "covered" by your tests. By itself, this is useful for finding untested or poorly tested areas of your application. Issues can arise though if your app is structure in such a way where a test _accidentally_ covers some of your code. Sometimes this is okay or even preferable when testing protected methods **via** their public interfaces, but this can lead to a false sense of security where atomic units of your code are only covered because something else that is tested happens to call them.
 
 So PHPUnit's `@covers` annotation exists to provide a way to restrict which parts of your code a given unit test is _meant_ to cover. Practically speaking this means that when PHPUnit generates coverage reports, it will use the `@covers` annotations to only count lines of code explicitly **@cover**ed by your test.
@@ -40,6 +42,7 @@ So PHPUnit's `@covers` annotation exists to provide a way to restrict which part
 1. Open the coverage report index `coverage/index.html` in your browser. _(On a Mac, type `open coverage/index.html` in your Terminal.)_
 	* In your browser, click on the `SampleClass.php` link to see detailed coverage for that class.
 	* _(You can keep this window open from now on, and just refresh the page after running `./phpunit-runner.sh`.)_
+	* _([Here is an example](http://beporter.github.io/phpunit-coverage-tutorial/coverage/SampleClass.php.html) of the initial coverage report in case you are just poking around this project and not actually following around at home.)_
 	* The coverage seems pretty good in spite of those skipped tests! We're only missing one line of code in `fib()`. Except there's an issue here...
 	* If you hover your mouse over any of the green "covered" lines of code, you'll see the names of the tests that executed that line.
 	* In this case, all of our lines are covered by `testPrintFibSequence()`. **Uh oh**, that means our code coverage of `fib()` and `aryToStr()` is based on incidental calls from `printFibSequence()`.
