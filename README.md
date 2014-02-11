@@ -2,7 +2,8 @@
 
 A small demonstration of using PHPUnit's [@covers annotation](http://phpunit.de/manual/current/en/appendixes.annotations.html#appendixes.annotations.covers) to control code coverage.
 
-[![Build Status](https://travis-ci.org/beporter/phpunit-coverage-tutorial.png?branch=master)](https://travis-ci.org/beporter/phpunit-coverage-tutorial) <!-- [![Coverage Status](https://coveralls.io/repos/beporter/phpunit-coverage-tutorial/badge.png)](https://coveralls.io/r/beporter/phpunit-coverage-tutorial) -->
+[![Build Status](https://travis-ci.org/beporter/phpunit-coverage-tutorial.png?branch=master)](https://travis-ci.org/beporter/phpunit-coverage-tutorial)
+[![Coverage Status](http://beporter.github.io/phpunit-coverage-tutorial/img/coverage.png)](http://beporter.github.io/phpunit-coverage-tutorial/coverage/)
 
 PHPUnit utilizes the [xdebug](http://xdebug.org/) extension in order to analyze your code and determine which lines of your code are "covered" by your tests. By itself, this is useful for finding untested or poorly tested areas of your application. Issues can arise though if your app is structure in such a way where a test _accidentally_ covers some of your code. Sometimes this is okay or even preferable when testing protected methods **via** their public interfaces, but this can lead to a false sense of security where atomic units of your code are only covered because something else that is tested happens to call them.
 
