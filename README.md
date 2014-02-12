@@ -127,3 +127,33 @@ Please [post an issue](https://github.com/beporter/phpunit-coverage-tutorial/iss
 ## Copyright
 
 &copy; 2014 Brian Porter
+
+
+
+## Technical Details
+
+* The `composer.json` file (in this case) is really only needed to pull in tools used for testing (phpunit and [woodhouse](https://github.com/IcecaveStudios/woodhouse).)
+	* It's also used locally for "one-time" set up the rest of these configs, so you'll have to run `composer install` at least once to do the rest of this.
+* You must have a script that will execute your full test suite, in our case that's `phpunit-runner.sh.
+	* It's important that the phpunit script be set up to generate HTML coverage and a text coverage file for use by woodhouse later.
+	* These generated files should be included in the `.gitignore` so they do not get accidentally committed to the repo.
+* The `.travis.yml` config specifies the `phpunit-runner.sh` as the "script" to run during travis executions.
+* The travis config specifies woodhouse.sh as the "after-run" script to publish code coverage back to the `gh-pages` branch of the Github repo.
+* Woodhouse needs a Github auth token in order to do the publishing.
+* The auth token can be created manually in your Github repo's settings, or [using the woodhouse command line tool](https://github.com/IcecaveStudios/woodhouse#creating-a-github-token).
+* That auth token [needs to be encrypted](http://docs.travis-ci.com/user/build-configuration/#Secure-environment-variables) as an environment variable that is available during travis test runs using `travis encrypt ENV_VAR_NAME="env var value"`.  (See also: [installing the travis command line tool](https://github.com/travis-ci/travis#installation).)
+* The encrypted value needs to be saved into your `.travis.yml` file under `env: global: - secure:`.
+* The counterpart to this is that when you execute `woodhouse` (in this project, that happens in `woodhouse.sh`) you must tell woodhouse where to obtain the key using `--auth-env-token ENV_VAR_NAME` (where "ENV_VAR_NAME" is the same thing you encrypted earlier.
+	* Woodhouse also depends on a text coverage file generated earlier by phpunit so it can grab the proper code coverage badge, which will also be published back to gh-pages.
+* You should [lint your .travis.yml file](http://docs.travis-ci.com/user/travis-lint/).
+* You should [lint your composer.json file](https://getcomposer.org/doc/03-cli.md#validate).
+* Finally, you must [enable travis for your repo](http://docs.travis-ci.com/user/getting-started/#Step-one%3A-Sign-in).
+
+What this all accomplishes:
+
+* When you push a commit, travis is notified and starts a test run.
+* Travis uses a virtual machine to clone your code, init any git submodules, install any composer dependencies, and then executes a script which should run your entire test suite.
+* The exit code of that script determines if the build passes (0) or fails (>0).
+* Any other necessary steps are also run before/after (including woodhouse:)
+	* woodhouse takes any local "artifacts" you designate and commits them back to the named repo into the `gh-pages` branch.
+	* These artifacts become available at http://_username_.github.io/_repository_/, which you can link to in your README to display a build status or code coverage badge, for example.
